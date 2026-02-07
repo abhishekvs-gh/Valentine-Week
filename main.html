@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+    content="width=device-width,
+    initial-scale=1" />
+    <title> For You ❤️</title>
+
+    <!-- Bootstrap CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #ffe6f0, #fff5f9);
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .card {
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+    .hidden { 
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.2s ease;
+     }
+    .reveal {
+        opacity: 1;
+        max-height: 1000px;
+        margin-top: 15px;
+        transition: 
+            opacity 0.8s ease,
+            max-height 0.9s ease-out;
+    }
+    .container { max-width: 500px;}
+    .sparkle {
+        position: absolute;
+        font-size: 20px;
+        animation: pop 0.8s ease forwards;
+    }
+
+    @keyframes pop {
+        0% { transform: scale(0.5) translateY(0); opacity: 1; }
+        100% { transform: scale(1.5) translateY(-30px); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+
+<!-- ❤️ MAIN CONTENT -->
+<div id="mainContent">
+
+  <div class="container py-5 text-center">
+    <h1 class="mb-4">Valentine’s Week — For Anu baby ❤️</h1>
+    <p>Open these whenever you get a quiet moment.</p>
+  </div>
+
+  <div class="container pb-5">
+
+    <!-- Rose Day -->
+    <div class="card p-4 mb-4 text-center">
+      <h4>Day 1 - 🌹 Rose Day</h4>
+      <button id="btn-rose" class="btn btn-outline-danger" onclick="toggle('rose')" disabled>Locked</button>
+
+      <div id="rose" class="hidden mt-3">
+        <img src="images/rose.jpg" class="img-fluid rounded mb-3" style="max-height: 250px;
+        object-fit: cover;">
+        <p>Really really wish I could give you a big bundle of roses right now. More than gifting, seeing your smile blossom is what makes me the happiest! Wishing my dear baby a Happy Roses Day!</p>
+      </div>
+      <small id="msg-rose" class="text-muted"></small>
+    </div>
+
+    <!-- Propose Day -->
+    <div class="card p-4 mb-4 text-center">
+      <h4>Day 2 - 💍 Propose Day</h4>
+      <button id="btn-propose" class="btn btn-outline-danger" onclick="toggle('propose')" disabled>Locked</button>
+      <p id="propose" class="hidden mt-3">I really like what we have, distance and all.</p>
+      <small id="msg-propose" class="text-muted"></small>
+    </div>
+
+    <!-- Chocolate Day -->
+    <div class="card p-4 mb-4 text-center">
+      <h4>Day 3 - 🍫 Chocolate Day</h4>
+      <button id="btn-choco" class="btn btn-outline-danger" onclick="toggle('choco')" disabled>Locked</button>
+      <p id="choco" class="hidden mt-3">Virtual chocolate — redeemable in real life.</p>
+      <small id="msg-choco" class="text-muted"></small>
+    </div>
+    
+    <!-- Teddy Day -->
+    <div class="card p-4 mb-4 text-center">
+      <h4>Day 4 - 🧸 Teddy Day</h4>
+      <button id="btn-teddy" class="btn btn-outline-danger" onclick="toggle('teddy')" disabled>Locked</button>
+      <p id="teddy" class="hidden mt-3">Your Teddy loves You more than you do 😏</p>
+      <small id="msg-teddy" class="text-muted"></small>
+    </div>
+
+    <!-- Promise Day -->
+    <div class="card p-4 mb-4 text-center">
+      <h4>Day 5 - 🥰 Promise Day</h4>
+      <button id="btn-promise" class="btn btn-outline-danger" onclick="toggle('promise')" disabled>Locked</button>
+      <p id="promise" class="hidden mt-3">Promise You'll be never misunderstood</p>
+      <small id="msg-promise" class="text-muted"></small>
+    </div>
+
+    <!-- Hug Day -->
+    <div class="card p-4 mb-4 text-center">
+      <h4>Day 6 - 🤗 Hug Day</h4>
+      <button id="btn-hug" class="btn btn-outline-danger" onclick="toggle('hug')" disabled>Locked</button>
+      <p id="hug" class="hidden mt-3">SQUEEZE HUG ACTIVATED 🤍</p>
+      <small id="msg-hug" class="text-muted"></small>
+    </div>
+
+    <!-- Kiss Day -->
+    <div class="card p-4 mb-4 text-center">
+      <h4>Day 7 - 💋 Kiss Day</h4>
+      <button id="btn-kiss" class="btn btn-outline-danger" onclick="toggle('kiss')" disabled>Locked</button>
+      <p id="kiss" class="hidden mt-3">Ummaah for my cutie baby 😘</p>
+      <small id="msg-kiss" class="text-muted"></small>
+    </div>
+
+    <!-- Valentine’s Day -->
+    <div class="card p-4 mb-4 text-center">
+      <h4>❤️ Valentine’s Day !!!!</h4>
+      <button id="btn-vday" class="btn btn-danger" onclick="toggle('vday')" disabled>Locked</button>
+      <p id="vday" class="hidden mt-3">
+        Thank you for choosing us, even with the distance. We’ll celebrate properly soon.
+      </p>
+      <small id="msg-vday" class="text-muted"></small>
+    </div>
+
+  </div>
+</div>
+
+<script>
+if (document.referrer.indexOf("index.html") === -1) {
+  document.body.innerHTML = `
+    <div style="height:100vh;display:flex;justify-content:center;align-items:center;font-family:sans-serif;text-align:center;">
+      <div>
+        <h2>🔒 Nice try</h2>
+        <p>This page needs the secret door first.</p>
+      </div>
+    </div>`;
+}
+</script>
+
+<script>
+function unlockDay(buttonId, msgId, day, month) {
+  const today = new Date();
+  const currentDay = today.getDate();
+  const currentMonth = today.getMonth(); // February = 1
+
+  const button = document.getElementById(buttonId);
+  const msg = document.getElementById(msgId);
+
+  if (currentDay >= day && currentMonth === month) {
+    button.disabled = false;
+    button.textContent = "Open";
+    msg.textContent = "Unlocked 💖";
+  } else {
+    button.disabled = true;
+    button.textContent = "Locked 🔒";
+    msg.textContent = "Come back on " + day + " Feb";
+  }
+}
+
+window.onload = function () {
+  unlockDay("btn-rose", "msg-rose", 7, 1);
+  unlockDay("btn-propose", "msg-propose", 8, 1);
+  unlockDay("btn-choco", "msg-choco", 9, 1);
+  unlockDay("btn-teddy", "msg-teddy", 10, 1);
+  unlockDay("btn-promise", "msg-promise", 11, 1);
+  unlockDay("btn-hug", "msg-hug", 12, 1);
+  unlockDay("btn-kiss", "msg-kiss", 13, 1);
+  unlockDay("btn-vday", "msg-vday", 14, 1);
+};
+</script>
+
+<script>
+  
+  function toggle(id) {
+    const el = document.getElementById(id);
+
+     if (el.classList.contains("reveal")) {
+    el.classList.remove("reveal");
+    el.classList.add("hidden");
+    } else {
+    el.classList.remove("hidden");
+    el.classList.add("reveal");
+    createSparkle(el);
+    } 
+  }
+
+    function createSparkle(element) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.innerHTML = "💖";
+
+        const rect = element.getBoundingClientRect();
+        sparkle.style.left = rect.left + rect.width / 2 + "px";
+        sparkle.style.top = rect.top + "px";
+
+        document.body.appendChild(sparkle);
+
+        setTimeout(() => sparkle.remove(), 800);
+    }
+
+  
+</script>
+
+</body>
+</html>
